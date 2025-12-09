@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome - Create Account</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    
+    <style>
+      /* --- Global Styles --- */
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 80px; 
+      }
+
+      /* --- Navbar Styles --- */
+      .navbar-glass {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+      .navbar-brand { font-weight: 700; color: #764ba2 !important; }
+      .nav-link { color: #555 !important; font-weight: 500; }
+      .nav-link:hover { color: #764ba2 !important; }
+
+      /* --- Hero Section (Main Page Text) --- */
+      .hero-section {
+        color: white;
+        text-align: center;
+        margin-top: 100px;
+      }
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+      
+      /* --- Modal (Popup) Styles --- */
+      .modal-content {
+        border-radius: 20px;
+        border: none;
+        overflow: hidden;
+      }
+      .modal-header {
+        background: linear-gradient(to right, #667eea, #764ba2);
+        color: white;
+        border-bottom: none;
+      }
+      .modal-title { font-weight: 600; }
+      .btn-close { filter: invert(1); } /* Makes the X white */
+
+      /* --- Form Elements --- */
+      .form-control:focus {
+        border-color: #764ba2;
+        box-shadow: 0 0 0 0.25rem rgba(118, 75, 162, 0.25);
+      }
+      .form-floating > .form-control:focus ~ label { color: #764ba2; }
+
+      /* --- Buttons --- */
+      .btn-signup-nav {
+        background: #764ba2;
+        color: white;
+        border-radius: 50px;
+        padding: 8px 25px;
+        font-weight: 600;
+        border: none;
+        transition: transform 0.2s;
+      }
+      .btn-signup-nav:hover {
+        background: #5b3a7d;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .btn-submit-form {
+        background: linear-gradient(to right, #667eea, #764ba2);
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 50px;
+        width: 100%;
+      }
+      .btn-submit-form:hover {
+        opacity: 0.9;
+        color: white;
+      }
+
+      /* --- Footer --- */
+      .footer-glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">MyApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            
+            <li class="nav-item ms-lg-3">
+              <a class="nav-link" href="#">Log In</a>
+            </li>
+            
+            <li class="nav-item ms-2">
+              <button 
+                class="btn btn-signup-nav" 
+                data-bs-toggle="modal" 
+                data-bs-target="#signupModal">
+                Sign Up
+              </button>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero-section animate__animated animate__fadeIn">
+      <h1 class="hero-title">Welcome to the Future</h1>
+      <p class="lead">Build, Deploy, and Scale your applications with ease.</p>
+      <button class="btn btn-outline-light btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#signupModal">
+        Get Started Today
+      </button>
+    </main>
+
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content animate__animated animate__zoomIn">
+          
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModalLabel">Create Account</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-4">
+            <form action="/addUser" method="POST">
+              
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required />
+                <label for="username">Username</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required />
+                <label for="email">Email Address</label>
+              </div>
+
+              <div class="form-floating mb-4">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+                <label for="password">Password</label>
+              </div>
+
+              <button type="submit" class="btn btn-submit-form">
+                Sign Up Now
+              </button>
+            </form>
+          </div>
+          
+          <div class="modal-footer justify-content-center bg-light border-0">
+            <small class="text-muted">Already have an account? <a href="#" class="text-decoration-none">Log in</a></small>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-glass py-4">
+      <div class="container text-center">
+        <p class="mb-1 text-muted">&copy; 2023 MyApp Inc. All rights reserved.</p>
+        <small class="text-muted">Developed with Bootstrap, Node.js & Docker</small>
+        
+        <div class="mt-2">
+            <a href="/getUsers" target="_blank" class="text-primary text-decoration-none fw-bold small">
+                Admin: See all users (JSON) &rarr;
+            </a>
+        </div>
+
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
